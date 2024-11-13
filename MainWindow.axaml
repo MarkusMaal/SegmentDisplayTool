@@ -1,0 +1,81 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Width="800" Height="450"
+        x:Class="SegmentDisplayTool.MainWindow"
+        Title="SegmentDisplayTool" Loaded="OnLoad">
+    <Grid>
+        <Label Margin="20" FontSize="25">7/8 segment display toolkit</Label>
+        <Canvas Name="DigitDisplay" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Black" Width="200" Height="260">
+            <Polygon PointerPressed="ToggleSegment" Name="Segment1"
+                Points="40,30 60,20 120,20 140,30 120,40 60,40">
+                <Polygon.Fill>
+                    <SolidColorBrush Color="DimGray" Opacity="1"></SolidColorBrush>
+                </Polygon.Fill>
+            </Polygon>
+            <Polygon PointerPressed="ToggleSegment" Name="Segment2"
+                     Points="40,30 50,50 50,110 40,130 30,110 30,50">
+                <Polygon.Fill>
+                    <SolidColorBrush Color="DimGray" Opacity="1"></SolidColorBrush>
+                </Polygon.Fill>
+            </Polygon>
+            <Polygon PointerPressed="ToggleSegment" Margin="0,100,0,0" Name="Segment3"
+                     Points="40,30 60,20 120,20 140,30 120,40 60,40">
+                <Polygon.Fill>
+                    <SolidColorBrush Color="DimGray" Opacity="1"></SolidColorBrush>
+                </Polygon.Fill>
+            </Polygon>
+            <Polygon PointerPressed="ToggleSegment" Margin="100,0,0,0" Name="Segment4"
+                     Points="40,30 50,50 50,110 40,130 30,110 30,50">
+                <Polygon.Fill>
+                    <SolidColorBrush Color="DimGray" Opacity="1"></SolidColorBrush>
+                </Polygon.Fill>
+            </Polygon>
+            <Polygon PointerPressed="ToggleSegment" Margin="0,100,0,0" Name="Segment5"
+                     Points="40,30 50,50 50,110 40,130 30,110 30,50">
+                <Polygon.Fill>
+                    <SolidColorBrush Color="DimGray" Opacity="1"></SolidColorBrush>
+                </Polygon.Fill>
+            </Polygon>
+            <Polygon PointerPressed="ToggleSegment" Margin="0,200,0,0" Name="Segment6"
+                     Points="40,30 60,20 120,20 140,30 120,40 60,40">
+                <Polygon.Fill>
+                    <SolidColorBrush Color="DimGray" Opacity="1"></SolidColorBrush>
+                </Polygon.Fill>
+            </Polygon>
+            <Polygon PointerPressed="ToggleSegment" Margin="100,100,0,0" Name="Segment7"
+                     Points="40,30 50,50 50,110 40,130 30,110 30,50">
+                <Polygon.Fill>
+                    <SolidColorBrush Color="DimGray" Opacity="1"></SolidColorBrush>
+                </Polygon.Fill>
+            </Polygon>
+            <Ellipse Name="DotSegment" PointerPressed="ToggleSegment"
+                     Canvas.Bottom="20"
+                     Canvas.Right="20"
+                     Fill="DimGray"
+                     Height="20"
+                     Width="20"></Ellipse>
+        </Canvas>
+        <StackPanel VerticalAlignment="Bottom" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <StackPanel.Spacing>15</StackPanel.Spacing>
+                <Label Name="DataDisplay" VerticalAlignment="Center">00000000</Label>
+                <CheckBox Name="DpFirstCheck" IsChecked="True" IsCheckedChanged="BootstrapDisplayData">DP is the first bit</CheckBox>
+                <CheckBox Name="DpIncludeCheck" IsChecked="True" IsCheckedChanged="BootstrapDisplayData">Include DP</CheckBox>
+                <Button Click="CopyData">Copy data to clipboard</Button>
+                <TextBox Name="DataSeparator" Width="100" TextChanged="DataSeparator_OnTextChanged">&lt;none&gt;</TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,0,10,10">
+                <StackPanel.Spacing>10</StackPanel.Spacing>
+                <Button Name="LightColor" Click="ChangeColor">Change light color</Button>
+                <Button Click="DecodeByte">Decode a byte</Button>
+                <ComboBox SelectedIndex="0" SelectionChanged="ChangeDisplayTechnology">
+                    <ComboBoxItem>LED-RGB</ComboBoxItem>
+                    <ComboBoxItem>Reflective LCD</ComboBoxItem>
+                    <ComboBoxItem>E-paper</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
